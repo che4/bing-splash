@@ -2,12 +2,6 @@ language: java
 cache:
   directories:
   - "$HOME/.m2"
-env:
-  global:
-  - PUSH_GIT_REPO: github.com/cavairexpert/caviarexpert.github.io.git
-  - PUSH_GIT_BRANCH: master
-  - secure_desc: GH_TOKEN=[TOKEN]
-  - secure: Xuowb228LWj9Xa7HPQvwleDWqREzFSnViivZGZ1JjjLGljhEf5OTPtCCsGA1H9x3SVo+MVM6qAyNA53gR40bub5uKBVSnqkQA+9ZB41wjry8tIQo4M1rHFr3UywrXlmujVActspY7OD5zXmkuwb3BBZBYNgYgI/ZotFJBlu0G7W96ZxuQ28bEIuYEqCeIsZ2BJoELXYoCdiRvJgFkFoqIDNvAZYjcUSY/zFzveqZm9vNrUtCQBhve1fYu6tQQEkPwoO01a+CZwb/8Hh8T06KAns8ClHqYGzF1ySWqCfcAl07+D7WsYOm9v9BhyA2lbArfBRKT6ox4YLllw22n8ATYPiFgKAIwAIUC2BF/63sZYLaVIK1uSf6Vg5eyop8LhpiOSIIis4FvZrmvJmZ0m0Hx3UhLL36dTJNymmpxDb3g0zA93obAMut5iolzQ0ueFDsOGpI84Oj4W+ukJWyO0k+8GULkjcCNCFyranhqUmawibYubXaLL+IUI86nbYuTbbAUSC6ABG4348t9k7/YoHnB4IqujRsXtvVACLAYoc4fH9PgUdKmeN+P76sXtBJ1YELzTDEpUPsrMM70Mn1xEDYzhadJHwJ2ROoqoCRsVJu59ja9pDLtNTeby1kVBflO/HuSBtynAsOoAZBArgkygOnYGvmotoTIfcLNVht6HhWQ40=
 
 script: mvn -f splash.releng/pom.xml
 deploy:
