@@ -1,0 +1,20 @@
+language: java
+cache:
+  directories:
+  - "$HOME/.m2"
+env:
+  global:
+  - PUSH_GIT_REPO: github.com/cavairexpert/caviarexpert.github.io.git
+  - PUSH_GIT_BRANCH: master
+  - secure_desc: GH_TOKEN=[TOKEN]
+  - secure: Xuowb228LWj9Xa7HPQvwleDWqREzFSnViivZGZ1JjjLGljhEf5OTPtCCsGA1H9x3SVo+MVM6qAyNA53gR40bub5uKBVSnqkQA+9ZB41wjry8tIQo4M1rHFr3UywrXlmujVActspY7OD5zXmkuwb3BBZBYNgYgI/ZotFJBlu0G7W96ZxuQ28bEIuYEqCeIsZ2BJoELXYoCdiRvJgFkFoqIDNvAZYjcUSY/zFzveqZm9vNrUtCQBhve1fYu6tQQEkPwoO01a+CZwb/8Hh8T06KAns8ClHqYGzF1ySWqCfcAl07+D7WsYOm9v9BhyA2lbArfBRKT6ox4YLllw22n8ATYPiFgKAIwAIUC2BF/63sZYLaVIK1uSf6Vg5eyop8LhpiOSIIis4FvZrmvJmZ0m0Hx3UhLL36dTJNymmpxDb3g0zA93obAMut5iolzQ0ueFDsOGpI84Oj4W+ukJWyO0k+8GULkjcCNCFyranhqUmawibYubXaLL+IUI86nbYuTbbAUSC6ABG4348t9k7/YoHnB4IqujRsXtvVACLAYoc4fH9PgUdKmeN+P76sXtBJ1YELzTDEpUPsrMM70Mn1xEDYzhadJHwJ2ROoqoCRsVJu59ja9pDLtNTeby1kVBflO/HuSBtynAsOoAZBArgkygOnYGvmotoTIfcLNVht6HhWQ40=
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: "./bing-splash.update-site/target/repository"
+  on:
+    branch: master
+  target_branch: gh-pages
+  github_token:
+    secure: cIsHnjOO3drSqPEQLXJVGqAjbkjTzU5vRKKmx2dt1GeupfwN4x07vuGTz2omC6GkSmIOEkU9gU8fNqXs3VSpirzpQKwCxUz4XPOQmB9afxvwDidGWqMK0yZCz5CIEiiuMtRxxD+DBZHQ1ILqXO2/lpEOPWbpr6/4ZsgtcQIZzZgpXGopepmkRaGD+XO1zR2lxF4IZNlADux5adtURBO+A2qBkPv+D4dBnhNnCrWK8AoWcmQq5QH4tBQ+3tsQl+k4MBgAOQaBZ09jYvkO9tHFdaIi8YXb0eMio/IL3910WZ4yBwzPfQ6FpNV00alVBSj6bafghVX0sII4zdgCksnUuL1Qi87Ojws3nl2tvrR9WM8QMGJkIQsOQCM07aG+mxg1wX7wQnBq2Srw9V21xvNYajLQcxu53GRewDJa+6bbCHjiT4+X+Tz/oIQ19WcyuxwVy2jLzgOM4JShMUtztMWsPKkjYSZRWhWmp6GBwnF7Xo6dkpH1CnrTDWvoQxfRCfFCKJMEUeyr8gnq16oL+LyQcG7S65iHq/HwNBUskacgL1OFS80sQ98RvFRpPlLSwm8UW4XMl9FwV4ThShUwpmqh1ld5PVKelJiWXnzZr1LrYlwgbswV5bkxxi38v4mcot//mmCHccGE9HrgoZ9jBg8vZLurazDp2TjyZHyqaqne6OE=
