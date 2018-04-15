@@ -210,7 +210,7 @@
 		-->
 		<repository>
 			<id>bintray</id>
-			<url>https://api.bintray.com/maven/che4/public/target-dev-platform/</url>
+			<url>https://dl.bintray.com/che4/public/</url>
 		</repository>
 	</repositories>
 	<ciManagement>
