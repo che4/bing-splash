@@ -1,0 +1,3 @@
+provides.0.namespace=io.github.che4.touchpoint
+provides.0.name=bingSplash
+provides.0.version=1.0.0

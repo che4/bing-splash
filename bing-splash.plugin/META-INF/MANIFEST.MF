@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Eclipse splash from www.bing.com
+Bundle-SymbolicName: io.github.che4.splash;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: Che4
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Import-Package: com.fasterxml.jackson.annotation,
+ com.fasterxml.jackson.core,
+ com.fasterxml.jackson.databind,
+ io.github.che4.splash,
+ io.github.che4.splash.bing,
+ org.apache.commons.io,
+ org.eclipse.osgi.service.datalocation,
+ org.eclipse.osgi.service.runnable
+Export-Package: io.github.che4.splash,
+ io.github.che4.splash.bing
+Bundle-ActivationPolicy: lazy
+Service-Component: OSGI-INF/component.xml
+Require-Bundle: org.eclipse.core.runtime

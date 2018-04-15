@@ -1,0 +1,4 @@
+#metaRequirements.0.namespace=org.eclipse.equinox.p2.iu
+#metaRequirements.0.name=com.itranga.e4.branding.touchpoint
+
+#instructions.configure=com.itranga.e4.branding.touchpoint.changeSplash();

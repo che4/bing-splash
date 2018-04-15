@@ -1,0 +1,8 @@
+## this splits feature as category and makes bundles standalone features.
+# properties.1.name=org.eclipse.equinox.p2.type.category
+# properties.1.value=true
+
+metaRequirements.0.namespace=io.github.che4.touchpoint
+metaRequirements.0.name=bingSplash
+
+instructions.configure=io.github.che4.touchpoint.bingSplash();

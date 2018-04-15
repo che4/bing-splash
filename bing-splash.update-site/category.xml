@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/io.github.che4.splash.feature_1.0.0.qualifier.jar" id="io.github.che4.splash.feature" version="1.0.0.qualifier">
+      <category name="experiments"/>
+   </feature>
+   <category-def name="experiments" label="Bing splash screen for Eclipse"/>
+</site>

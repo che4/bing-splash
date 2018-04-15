@@ -1,0 +1,1 @@
+#instructions.configure=setProgramProperty(propName:osgi.splashPath,propValue:platform\${#58}/base/features/org.eclipse.platform);
