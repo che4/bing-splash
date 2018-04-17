@@ -1,2 +1,25 @@
 <?xml version="1.0" encoding="ASCII"?>
-<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmi:id="_BxaXACerEeWxCPrV0pAZQQ"/>
+<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/descriptor/basic" xmlns:basic_1="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:commands="http://www.eclipse.org/ui/2010/UIModel/application/commands" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_BxaXACerEeWxCPrV0pAZQQ">
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_gkR0MEFVEei6FIQUyR7eAw" featurename="menuContributions" parentElementId="xpath:/">
+    <elements xsi:type="menu:MenuContribution" xmi:id="_k6IaIEFVEei6FIQUyR7eAw" elementId="io.github.che4.splash.menu" positionInParent="after=io.github.che4.menu.0.menuseparator.0" parentId="io.github.che4.menu.0">
+      <children xsi:type="menu:HandledMenuItem" xmi:id="_svtPQEFVEei6FIQUyR7eAw" elementId="io.github.che4.splash.menu.item.BingSplash" label="%io.github.che4.splash.menu.item.BingSplash" iconURI="platform:/plugin/io.github.che4.splash/icons/bing_16.png" command="_dsEJkEFYEei6FIQUyR7eAw"/>
+      <children xsi:type="menu:MenuSeparator" xmi:id="_86M2AEFXEei6FIQUyR7eAw" elementId="io.github.che4.splash.menu.0.menuseparator.0"/>
+    </elements>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_YeZK0EFYEei6FIQUyR7eAw" featurename="commands" parentElementId="xpath:/">
+    <elements xsi:type="commands:Command" xmi:id="_dsEJkEFYEei6FIQUyR7eAw" elementId="io.github.che4.splash.command.showsplashsettings" commandName="ShowSplashSettings" description="Show splash settings view"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_e2LIEEFfEei6FIQUyR7eAw" featurename="descriptors" parentElementId="org.eclipse.e4.legacy.ide.application">
+    <elements xsi:type="basic:PartDescriptor" xmi:id="_jhC7wEFfEei6FIQUyR7eAw" elementId="io.github.che4.splash.partdescriptor.bingSplashSettings" label="%io.github.che4.splash.partdescriptor.bingSplashSettings.title" iconURI="platform:/plugin/io.github.che4.splash/icons/bing_16.png" category="ux" closeable="true" contributionURI="bundleclass://io.github.che4.splash/io.github.che4.splash.ui.SplashPart">
+      <tags>View</tags>
+    </elements>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_GRd70EFiEei6FIQUyR7eAw" featurename="handlers" parentElementId="xpath:/">
+    <elements xsi:type="commands:Handler" xmi:id="_V0I_gEFiEei6FIQUyR7eAw" elementId="io.github.che4.splash.handler.0" contributionURI="bundleclass://io.github.che4.splash/io.github.che4.splash.ui.handler.BingSettingsViewHandler" command="_dsEJkEFYEei6FIQUyR7eAw"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_qdKxoEFlEei6FIQUyR7eAw" featurename="snippets" parentElementId="xpath:/">
+    <elements xsi:type="advanced:Perspective" xmi:id="_Eea3kEFnEei6FIQUyR7eAw" elementId="io.github.che4.splash.perspective.myperspective" selectedElement="__Bkp0EFlEei6FIQUyR7eAw" label="My perspective">
+      <children xsi:type="basic_1:Part" xmi:id="__Bkp0EFlEei6FIQUyR7eAw" elementId="io.github.che4.splash.part.bingSplashSettings" contributionURI="bundleclass://io.github.che4.splash/io.github.che4.splash.ui.PartEclipse4x" label="My e4 part" closeable="true"/>
+    </elements>
+  </fragments>
+</fragment:ModelFragments>

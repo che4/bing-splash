@@ -3,10 +3,10 @@
 <plugin>
 
    <extension
-         id="com.itranga.e4.branding.fragment"
+         id="io.github.che4.splash.fragment"
          point="org.eclipse.e4.workbench.model">
       <fragment
-            apply="initial"
+            apply="notexists"
             uri="fragment.e4xmi">
       </fragment>
    </extension>

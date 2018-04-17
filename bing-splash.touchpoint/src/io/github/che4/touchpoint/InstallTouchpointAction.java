@@ -54,6 +54,8 @@ public class InstallTouchpointAction extends ProvisioningAction {
 			File file = Util.getArtifactFile(agent, artifactKey, profile);
 			FrameworkUtil.getBundle(InstallTouchpointAction.class);
 				//.getBundleContext().i.installBundle(candidate.);
+//			//PackageAdmin.refreshPackages()
+			//Bundle.start()
 		}
 		
 		return null;

@@ -17,6 +17,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.github.che4.splash.BmpConverter;
+import io.github.che4.splash.E4Constants;
 import io.github.che4.splash.bing.BingPhotoProvider;
 import io.github.che4.splash.bing.Constants;
 import io.github.che4.splash.bing.HPImageArchiveResponse;
@@ -47,7 +48,7 @@ public class BingPhotoOfTheDayTest {
 		BingPhotoProvider bpp = new BingPhotoProvider();
 		URL classesRootDir = getClass().getProtectionDomain().getCodeSource().getLocation();
 		Path rootPath = Paths.get(classesRootDir.toURI());
-		File splashDir = new File(rootPath.toFile(), "bmp_images");
+		File splashDir = new File(rootPath.toFile(), E4Constants.DOWNLOAD_DIR);
 		splashDir.mkdirs();
 		bpp.setSplashDirecotry(splashDir);
 		bpp.updatePhotos(7);

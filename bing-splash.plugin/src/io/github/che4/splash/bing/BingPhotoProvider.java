@@ -6,8 +6,13 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.github.che4.splash.BmpConverter;
@@ -29,36 +34,47 @@ public class BingPhotoProvider {
 		this.splashDirectory = splashDirectory;
 	}
 	
-	public long updatePhotos() throws IOException {
+	public Optional<File> getSplashDirectory(){
+		return Optional.ofNullable(splashDirectory);
+	}
+	
+	public CompletableFuture<Long> updatePhotos() {
 		return updatePhotos(0,1,"en-WW");
 	}
 	
-	public long updatePhotos(int n) throws IOException {
+	public CompletableFuture<Long> updatePhotos(int n) {
 		return updatePhotos(0, n, "en-WW");
 	}
 	
-	public long updatePhotos(int idx, int n, String mkt) throws IOException {
-		if(splashDirectory == null) throw new IllegalStateException("Don't forget to setSplashDirectory() before inoking updatePhotos()");
-		String rest_url_s = String.format(REST_SERIVCE_PATTERN, idx, n, mkt);
-		URL rest_url = new URL(rest_url_s);
-		HPImageArchiveResponse resp = objectMapper.readValue(rest_url, HPImageArchiveResponse.class);
-		Objects.nonNull(resp);
-		Objects.nonNull(resp.getImages());
-		return resp.getImages().stream()
-			.filter( potd -> !downloaded.containsKey(potd.urlbase))
-			.map( potd -> {
-				String imgFile = potd.urlbase + Constants.SIZE._640x360.toString() + ".jpg";
-				try {
-					URL imgUrl = new URL("http", BING_HOST, imgFile);
-					String filename = org.apache.commons.io.FilenameUtils.getName(potd.urlbase) + ".bmp";
-					File splashFile = new File(splashDirectory, filename);
-					BmpConverter.getBmp(imgUrl, splashFile);
-				} catch (Exception e) {
-					throw new RuntimeException(e);
-				}
-				return imgFile;
-			})
-			.count();
+	public CompletableFuture<Long> updatePhotos(int idx, int n, String mkt){
+		return CompletableFuture.supplyAsync( () -> { 
+			Objects.requireNonNull(splashDirectory, "Don't forget to setSplashDirectory() before inoking updatePhotos()");
+			String rest_url_s = String.format(REST_SERIVCE_PATTERN, idx, n, mkt);
+			HPImageArchiveResponse resp = null;
+			try {
+				URL rest_url = new URL(rest_url_s);
+				resp = objectMapper.readValue(rest_url, HPImageArchiveResponse.class);
+			}catch (Exception e) {
+				throw new CompletionException(e);
+			}
+			Objects.nonNull(resp);
+			Objects.nonNull(resp.getImages());
+			return resp.getImages().stream()
+				.filter( potd -> !downloaded.containsKey(potd.urlbase))
+				.map( potd -> {
+					String imgFile = potd.urlbase + Constants.SIZE._640x360.toString() + ".jpg";
+					try {
+						URL imgUrl = new URL("http", BING_HOST, imgFile);
+						String filename = org.apache.commons.io.FilenameUtils.getName(potd.urlbase) + ".bmp";
+						File splashFile = new File(splashDirectory, filename);
+						BmpConverter.getBmp(imgUrl, splashFile);
+					} catch (Exception e) {
+						throw new CompletionException(e);
+					}
+					return imgFile;
+				})
+				.count();
+		});
 			
 	}
 }
