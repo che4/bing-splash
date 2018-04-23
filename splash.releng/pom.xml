@@ -5,7 +5,7 @@
 	<artifactId>bing-splash.releng</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>Che4 :: Splash :: Release Engineering</name>	
+	<name>Che4 :: Splash :: Release Engineering</name>
 	<description>Parent artifact for github.com/che4/bing-splash project.</description>
 	<inceptionYear>2018</inceptionYear>
 	<url>https://che4.github.io</url>
@@ -209,8 +209,8 @@
 		</repository>
 		-->
 		<repository>
-			<id>bintray</id>
-			<url>https://dl.bintray.com/che4/public/</url>
+			<id>public-bintray</id>
+			<url>https://dl.bintray.com/che4/maven</url>
 		</repository>
 	</repositories>
 	<ciManagement>

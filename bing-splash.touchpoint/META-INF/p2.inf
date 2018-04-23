@@ -1,3 +1,7 @@
 provides.0.namespace=io.github.che4.touchpoint
 provides.0.name=bingSplash
 provides.0.version=1.0.0
+
+provides.1.namespace=io.github.che4.touchpoint
+provides.1.name=restoreSplash
+provides.1.version=1.0.0

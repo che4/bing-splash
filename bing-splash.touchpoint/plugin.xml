@@ -12,4 +12,15 @@
             version="1.0.0">
       </action>
    </extension>
+   <extension
+         point="org.eclipse.equinox.p2.engine.actions">
+      <action
+            class="io.github.che4.touchpoint.RestoreSplashAction"
+            description="Restores previous Eclipse splash"
+            name="restoreSplash"
+            touchpointType="org.eclipse.equinox.p2.osgi"
+            touchpointVersion="1.0.0"
+            version="1.0.0">
+      </action>
+   </extension>
 </plugin>

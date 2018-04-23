@@ -24,6 +24,9 @@ import io.github.che4.splash.utils.P2Util;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Button;
 import swing2swt.layout.BorderLayout;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.RowLayout;
+import org.eclipse.swt.layout.GridData;
 
 public class SplashPart {
 
@@ -38,30 +41,41 @@ public class SplashPart {
 		parent.setLayout(new FillLayout(SWT.VERTICAL));
 		
 		Composite composite = new Composite(parent, SWT.NONE);
-		composite.setLayout(new BorderLayout(0, 0));
-		
-		Button backButton = new Button(composite, SWT.NONE);
-		backButton.setLayoutData(BorderLayout.WEST);
-		backButton.setText("<---");
-		
-		Button forwardButton = new Button(composite, SWT.NONE);
-		forwardButton.setLayoutData(BorderLayout.EAST);
-		forwardButton.setText("--->");
-		
-		
-		Button saveButton = new Button(composite, SWT.NONE);
-		saveButton.setLayoutData(BorderLayout.SOUTH);
-		saveButton.setText("Set this image as splash");
-		
-		Canvas canvas = new Canvas(composite, SWT.NONE);
-		canvas.setLayoutData(BorderLayout.CENTER);
-		
-		final RenderHelper renderHelper = new RenderHelper(canvas);
+		composite.setLayout(new GridLayout(3, true));
 		
 		Label lblNewLabel = new Label(composite, SWT.NONE);
+		lblNewLabel.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false, 3, 1));
 		lblNewLabel.setAlignment(SWT.CENTER);
-		lblNewLabel.setLayoutData(BorderLayout.NORTH);
 		lblNewLabel.setText("Choose your next splash screen");
+		
+		Canvas canvas = new Canvas(composite, SWT.BORDER);
+		GridData gd_canvas = new GridData(SWT.CENTER, SWT.CENTER, false, false, 3, 1);
+		gd_canvas.widthHint = 579;
+		gd_canvas.heightHint = 326;
+		canvas.setLayoutData(gd_canvas);
+		
+		
+		
+		Button backButton = new Button(composite, SWT.NONE);
+		backButton.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+		backButton.setBounds(3, 3, 35, 25);
+		backButton.setText("\u2190");
+		
+		Button saveButton = new Button(composite, SWT.NONE);
+		saveButton.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false, 1, 1));
+		saveButton.setBounds(41, 3, 136, 25);
+		saveButton.setText("Set this image as splash");
+		
+		Button forwardButton = new Button(composite, SWT.NONE);
+		forwardButton.setBounds(180, 3, 35, 25);
+		forwardButton.setText("\u2192");
+		
+		
+		
+		final RenderHelper renderHelper = new RenderHelper(canvas);
+		new Label(composite, SWT.NONE);
+		new Label(composite, SWT.NONE);
+		new Label(composite, SWT.NONE);
 		
 		Bundle thisBundle = FrameworkUtil.getBundle(getClass());
 		Optional<File> optDir;
