@@ -48,7 +48,7 @@ public class InstallTouchpointAction extends ProvisioningAction {
 		Collection<IArtifactKey> artifacts = iu.getArtifacts();
 		if (artifacts == null || artifacts.isEmpty())
 			return Util.createError(iu + " has no artifacts");
-		
+		/*
 		IArtifactKey artifactKey = null;
 		for (IArtifactKey candidate : artifacts) {
 			File file = Util.getArtifactFile(agent, artifactKey, profile);
@@ -57,6 +57,7 @@ public class InstallTouchpointAction extends ProvisioningAction {
 //			//PackageAdmin.refreshPackages()
 			//Bundle.start()
 		}
+		*/
 		
 		return null;
 	}

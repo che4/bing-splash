@@ -18,7 +18,6 @@ import org.eclipse.equinox.p2.engine.IProfile;
 import org.eclipse.equinox.p2.engine.spi.ProvisioningAction;
 import org.eclipse.equinox.p2.metadata.IArtifactKey;
 import org.eclipse.equinox.p2.metadata.IInstallableUnit;
-import org.osgi.framework.FrameworkUtil;
 
 @SuppressWarnings("restriction")
 public class ChangeSplashAction2  extends ProvisioningAction {
@@ -42,7 +41,7 @@ public class ChangeSplashAction2  extends ProvisioningAction {
 		else
 			performNewInstall(iu);
 		
-		TxtFile txtFile = TxtFile.get();
+		TestTxtFile txtFile = TestTxtFile.get();
 		parameters.entrySet().stream()
 			.forEach( e -> {
 				try {
@@ -107,7 +106,7 @@ public class ChangeSplashAction2  extends ProvisioningAction {
 	private void performUpgrade(IInstallableUnit iu, IInstallableUnit oldIu) {
 		String msg = "Upgrade: " + iu.getId() + " " + oldIu.getVersion() + " -> " + iu.getVersion();
 		try {
-			TxtFile txtFile = TxtFile.get();
+			TestTxtFile txtFile = TestTxtFile.get();
 			txtFile.appendLine(msg);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -117,7 +116,7 @@ public class ChangeSplashAction2  extends ProvisioningAction {
 	private void performNewInstall(IInstallableUnit iu) {
 		String msg = "New Install: " + iu.getId() + " " + iu.getVersion();
 		try {
-			TxtFile txtFile = TxtFile.get();
+			TestTxtFile txtFile = TestTxtFile.get();
 			txtFile.appendLine(msg);
 		} catch (IOException e) {
 			e.printStackTrace();

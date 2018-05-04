@@ -1,9 +1,7 @@
 package io.github.che4.touchpoint;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IStatus;
@@ -68,9 +66,9 @@ public class BingSplashAction extends ProvisioningAction {
 		LauncherData launcherData = manipulator.getLauncherData();
 		String[] programArgs = launcherData.getProgramArgs();
 		//List<String> newArgs = new ArrayList<>();
-		TxtFile log = TxtFile.get();
+		//TxtFile log = TxtFile.get();
 		try {
-			log.appendLine("Program arguments");
+			//log.appendLine("Program arguments");
 		for( int i=0; i<programArgs.length; i++) {
 			
 			if(programArgs[i].equalsIgnoreCase(TouchpointConstants.SPLASH_PROGRAM_ARG)) {
@@ -80,22 +78,15 @@ public class BingSplashAction extends ProvisioningAction {
 						data.setProperty(TouchpointConstants.SPLASH_PROGRAM_ARG_PREVIOUS, programArgs[valueIdx]);
 						//skip next argument and continue
 						i++;
-						log.appendLine("Removing arguments -showsplash " + programArgs[valueIdx]);
+						//log.appendLine("Removing arguments -showsplash " + programArgs[valueIdx]);
 						launcherData.removeProgramArg(TouchpointConstants.SPLASH_PROGRAM_ARG);
 						launcherData.removeProgramArg(programArgs[valueIdx]);
 						continue;
 					}
 				}
 			}
-			log.appendLine(programArgs[i]);
-			//newArgs.add(programArgs[i]);
 		}
-		//launcherData.setProgramArgs(newArgs.toArray(new String[] {}));
 		} catch (Exception e) {}
-		//TODO also handle eclipse.ini:
-		/*
-		 * -showsplash org.eclipse.epp.package.common
-		 */
 		return Status.OK_STATUS;
 	}
 

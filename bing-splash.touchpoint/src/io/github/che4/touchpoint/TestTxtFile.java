@@ -4,12 +4,12 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class TxtFile {
+public class TestTxtFile {
 
 	private final File file = new File("C:\\TEMP\\p2-test.txt");
 
-	public static TxtFile get() {
-		return new TxtFile();
+	public static TestTxtFile get() {
+		return new TestTxtFile();
 	}
 
 	public String path() {
