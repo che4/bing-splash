@@ -60,9 +60,11 @@ public class BingPhotoProvider {
 				.filter( potd -> !downloaded.containsKey(potd.urlbase))
 				.map( potd -> {
 					String imgFile = potd.urlbase + Constants.SIZE._640x360.toString() + ".jpg";
+					//String imgFile = potd.fullstartdate + "_" + mkt + "_" + Constants.SIZE._640x360.toString() + ".jpg"
 					try {
 						URL imgUrl = new URL("http", BING_HOST, imgFile);
-						String filename = org.apache.commons.io.FilenameUtils.getName(potd.urlbase) + ".bmp";
+						String filename = potd.fullstartdate + "_" + mkt + "_" + Constants.SIZE._640x360.toString() + ".bmp";
+						//String filename = org.apache.commons.io.FilenameUtils.getName(potd.urlbase) + ".bmp";
 						File splashFile = new File(splashDirectory, filename);
 						BmpConverter.getBmp(imgUrl, splashFile);
 					} catch (Exception e) {

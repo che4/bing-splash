@@ -28,7 +28,7 @@ public class BingPhotoOfTheDayTest {
 			.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	private static final org.slf4j.Logger LOG = org.slf4j.LoggerFactory.getLogger(BingPhotoOfTheDayTest.class);
 	
-	//@Test
+	@Test
 	public void getHPImageArchive() throws JsonParseException, JsonMappingException, MalformedURLException, IOException {
 		HPImageArchiveResponse resp = objectMapper.readValue(
 				new URL("http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=7&mkt=de-DE"), 
@@ -44,15 +44,18 @@ public class BingPhotoOfTheDayTest {
 	}
 	
 	@Test
-	public void getBing() throws IOException, URISyntaxException {
+	public void getBing() throws IOException, URISyntaxException, InterruptedException {
 		BingPhotoProvider bpp = new BingPhotoProvider();
 		URL classesRootDir = getClass().getProtectionDomain().getCodeSource().getLocation();
 		Path rootPath = Paths.get(classesRootDir.toURI());
 		File splashDir = new File(rootPath.toFile(), E4Constants.DOWNLOAD_DIR);
 		splashDir.mkdirs();
 		bpp.setSplashDirecotry(splashDir);
-		bpp.updatePhotos(7);
-		LOG.info("Bing images are in {}", splashDir.getAbsolutePath());
+		bpp.updatePhotos(7)
+			.thenAccept( num -> LOG.info("Downloaded {}", num));
+			//.thenAccept( () -> { LOG.info("Bing images are in {}", splashDir.getAbsolutePath()); return null;} );
+		Thread.sleep(2000);
+		
 	}
 	
 	//@Test

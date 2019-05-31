@@ -3,18 +3,18 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.github.che4</groupId>
 	<artifactId>bing-splash.releng</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Che4 :: Splash :: Release Engineering</name>
 	<description>Parent artifact for github.com/che4/bing-splash project.</description>
 	<inceptionYear>2018</inceptionYear>
-	<url>https://che4.github.io/bingsplash</url>
+	<url>https://che4.github.io</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<org.osgi.framework.storage.clean>onFirstInit</org.osgi.framework.storage.clean>
 		<org.osgi.core.version>4.3.1</org.osgi.core.version>
-		<tycho-version>1.4.0</tycho-version>
+		<tycho-version>1.1.0</tycho-version>
 		<!-- maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format -->
 		<version-range.target-platform>[0.0.2,0.1)</version-range.target-platform>
 		<!-- to generate actual last version use command mvn versions:update-properties -->
@@ -106,11 +106,6 @@
 							<phase>validate</phase>
 						</execution>
 					</executions>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-p2-repository-plugin</artifactId>
-					<version>${tycho-version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-install-plugin</artifactId>

@@ -41,43 +41,43 @@ public class ChangeSplashAction2  extends ProvisioningAction {
 		else
 			performNewInstall(iu);
 		
-		TestTxtFile txtFile = TestTxtFile.get();
+		//TestTxtFile txtFile = TestTxtFile.get();
 		parameters.entrySet().stream()
 			.forEach( e -> {
 				try {
-					txtFile.appendLine(e.getKey()+ " : " + e.getValue().toString() + " : " + e.getValue().getClass().getName());
-				} catch (IOException ex) {
+					//txtFile.appendLine(e.getKey()+ " : " + e.getValue().toString() + " : " + e.getValue().getClass().getName());
+				} catch (Exception ex) {
 					ex.printStackTrace();
 				}
 			});
 		try{
-			txtFile.appendLine("ARTIFACT LOCATION: " + parameters.get(EclipseTouchpoint.PARM_ARTIFACT_LOCATION).toString());
+			//txtFile.appendLine("ARTIFACT LOCATION: " + parameters.get(EclipseTouchpoint.PARM_ARTIFACT_LOCATION).toString());
 		}catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		try{
-			txtFile.appendLine("ARTIFACT : " + ((IArtifactKey) parameters.get(EclipseTouchpoint.PARM_ARTIFACT)).getId()
-					+ "  == " + parameters.get(EclipseTouchpoint.PARM_ARTIFACT).toString());
+			//txtFile.appendLine("ARTIFACT : " + ((IArtifactKey) parameters.get(EclipseTouchpoint.PARM_ARTIFACT)).getId()
+			//		+ "  == " + parameters.get(EclipseTouchpoint.PARM_ARTIFACT).toString());
 		}catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		try {
-			txtFile.appendLine("FEATURE TO BE INSTALLED : "+ iu.getId());
+			//txtFile.appendLine("FEATURE TO BE INSTALLED : "+ iu.getId());
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
 		try {
-			txtFile.appendLine("Artifacts "+ iu.getId());
+			//txtFile.appendLine("Artifacts "+ iu.getId());
 			Collection<IArtifactKey> artifacts = iu.getArtifacts();
-			txtFile.appendLine("Found: " + artifacts.size());
+			//txtFile.appendLine("Found: " + artifacts.size());
 			IArtifactKey artifactKey = null;
 			for (IArtifactKey candidate : artifacts) {
 				File file = Util.getArtifactFile(agent, artifactKey, profile);
-				txtFile.appendLine("- candidate = " + candidate.getId() + " : " + file.getAbsolutePath());
+				//txtFile.appendLine("- candidate = " + candidate.getId() + " : " + file.getAbsolutePath());
 				//FrameworkUtil.getBundle(InstallTouchpointAction.class);
 					//.getBundleContext().i.installBundle(candidate.);
 			}
@@ -89,7 +89,7 @@ public class ChangeSplashAction2  extends ProvisioningAction {
 		try {
 			String url = "platform:/base/plugins/com.itranga.e4.branding.touchpoint";
 			URL nativeUrl = FileLocator.resolve(new URL(url));
-			txtFile.appendLine("Platform URL " + url + " = " + nativeUrl.toString());
+			//txtFile.appendLine("Platform URL " + url + " = " + nativeUrl.toString());
 		}catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -106,9 +106,9 @@ public class ChangeSplashAction2  extends ProvisioningAction {
 	private void performUpgrade(IInstallableUnit iu, IInstallableUnit oldIu) {
 		String msg = "Upgrade: " + iu.getId() + " " + oldIu.getVersion() + " -> " + iu.getVersion();
 		try {
-			TestTxtFile txtFile = TestTxtFile.get();
-			txtFile.appendLine(msg);
-		} catch (IOException e) {
+			//TestTxtFile txtFile = TestTxtFile.get();
+			//txtFile.appendLine(msg);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -116,9 +116,9 @@ public class ChangeSplashAction2  extends ProvisioningAction {
 	private void performNewInstall(IInstallableUnit iu) {
 		String msg = "New Install: " + iu.getId() + " " + iu.getVersion();
 		try {
-			TestTxtFile txtFile = TestTxtFile.get();
-			txtFile.appendLine(msg);
-		} catch (IOException e) {
+			//TestTxtFile txtFile = TestTxtFile.get();
+			//txtFile.appendLine(msg);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

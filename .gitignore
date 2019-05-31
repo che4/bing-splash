@@ -1,0 +1,7 @@
+/**/target/
+/**/.flattened-pom.xml
+/.project
+/.settings/
+/.mvn/
+/mvnw
+/mvnw.cmd

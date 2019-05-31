@@ -1,8 +1,11 @@
 package io.github.che4.touchpoint;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Objects;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -61,7 +64,30 @@ public class BingSplashAction extends ProvisioningAction {
 		/* make a backup - even if it is null */ 
 		//getMemento().put(ActionConstants.PARM_PREVIOUS_VALUE, previous);
 		data.setProperty(TouchpointConstants.SPLASH_PROPERTY_NAME_PREVIOUS, previous);
-		data.setProperty(TouchpointConstants.SPLASH_PROPERTY_NAME, TouchpointConstants.SPLASH_PREFIX + featureName);
+		//TODO read from ConfigData eclipse.p2.profile, then get installation path for that profile. Get feature version
+		// and set splashpath to profilepath/features/ + featureName + _ + featureVersion
+		
+		//TestTxtFile txtFile = TestTxtFile.get();
+		//String installFolder = profile.getProperty(IProfile.PROP_INSTALL_FOLDER);
+		String cacheFolder = profile.getProperty(IProfile.PROP_CACHE);
+		//String configFolder = profile.getProperty(IProfile.PROP_CONFIGURATION_FOLDER);
+		if(cacheFolder==null) {
+			return Util.createError(IProfile.PROP_CACHE + " is undefined for p2 profile " + profile.getProfileId());
+		}
+		File featuresFolder = new File(cacheFolder, "features");
+		File featureFolder = new File(featuresFolder, featureName + "_" + iu.getVersion().toString());
+		try {
+			String featureFolderUrl = featureFolder.toURI().toURL().toString();
+			//txtFile.appendLine(TouchpointConstants.SPLASH_PROPERTY_NAME+"=" + featureFolderUrl );
+			
+			//data.setProperty(TouchpointConstants.SPLASH_PROPERTY_NAME, TouchpointConstants.SPLASH_PREFIX + featureName);
+			data.setProperty(TouchpointConstants.SPLASH_PROPERTY_NAME, featureFolderUrl);
+			
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
+		
 		
 		LauncherData launcherData = manipulator.getLauncherData();
 		String[] programArgs = launcherData.getProgramArgs();
