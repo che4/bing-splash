@@ -2,13 +2,16 @@ language: java
 cache:
   directories:
   - "$HOME/.m2"
+script: >-
+  mvn -f ./splash.releng/pom.xml --global-settings ./.travis/settings.xml -DforceContextQualifier=$TRAVIS_BUILD_NUMBER &&
+  mvn -f ./splash.releng/pom.xml --global-settings ./.travis/settings.xml -DbuildBy="Travis CI - $TRAVIS_BUILD_WEB_URL" deploy
 
-script: mvn -f ./splash.releng/pom.xml --global-settings ./.travis/settings.xml -DbuildBy="Travis CI - $TRAVIS_BUILD_WEB_URL"
-deploy:
-  provider: pages
-  skip_cleanup: true
-  local_dir: "./bing-splash.update-site/target/repository"
-  on:
-    branch: master
-  target_branch: gh-pages
-  github_token: $GITHUB_TOKEN
+
+#deploy:
+#  provider: pages
+#  skip_cleanup: true
+#  local_dir: "./bing-splash.update-site/target/repository"
+#  on:
+#    branch: master
+#  target_branch: gh-pages
+#  github_token: $GITHUB_TOKEN
