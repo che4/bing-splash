@@ -338,7 +338,7 @@
 				<repository>
 					<name>mybintray</name>
 					<id>bintray</id>
-					<url>https://api.bintray.com/maven/che4/maven/che4-i18n-menu/;publish=1</url>
+					<url>https://api.bintray.com/maven/che4/maven/bing-splash/;publish=1</url>
 				</repository>
 			</distributionManagement>
 		</profile>
