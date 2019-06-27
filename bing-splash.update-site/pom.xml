@@ -81,14 +81,18 @@
 						<id>upload-p2</id>
 						<phase>deploy</phase>
 						<goals>
-							<goal>upload-single</goal>
+							<goal>upload</goal>
 						</goals> 
 					</execution>
 				</executions>
 				<configuration>
 					<serverId>bintray</serverId>
+					<!-- 
 					<fromFile>${project.build.directory}/${project.artifactId}-${qualifiedVersion}.zip</fromFile>
 					<url>https://api.bintray.com/content/che4/p2-i18n-menu/${bintray-package};bt_package=${bintray-package};bt_version=${qualifiedVersion};publish=1;explode=1;override=1;</url>
+					-->
+					<fromDir>${project.build.directory}/repository</fromDir>
+					<url>https://api.bintray.com/content/che4/p2-i18n-menu/${bintray-package};bt_package=${bintray-package};bt_version=${qualifiedVersion};publish=1;override=1;</url>
 				</configuration>
 			</plugin>
 		</plugins>
