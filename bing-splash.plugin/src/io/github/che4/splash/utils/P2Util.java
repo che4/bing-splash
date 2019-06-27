@@ -9,7 +9,6 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
-import org.eclipse.equinox.internal.p2.touchpoint.eclipse.Util;
 import org.eclipse.equinox.p2.core.IProvisioningAgent;
 import org.eclipse.equinox.p2.engine.IProfile;
 import org.eclipse.equinox.p2.engine.IProfileRegistry;
@@ -142,7 +141,7 @@ public class P2Util {
 							IArtifactKey artifactKey = artifacts.iterator().next();
 							//log.appendLine("ArtifactKey: " + artifactKey.getId());
 							@SuppressWarnings("restriction")
-							File file = Util.getArtifactFile(provisioningAgent, artifactKey, p2Profile);
+							File file = org.eclipse.equinox.internal.p2.touchpoint.eclipse.Util.getArtifactFile(provisioningAgent, artifactKey, p2Profile);
 							//log.appendLine("ArtifactFile: " + file.getAbsolutePath());
 							return Optional.ofNullable(file);
 						}

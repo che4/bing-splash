@@ -16,11 +16,11 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import io.github.che4.splash.BmpConverter;
 import io.github.che4.splash.E4Constants;
 import io.github.che4.splash.bing.BingPhotoProvider;
 import io.github.che4.splash.bing.Constants;
 import io.github.che4.splash.bing.HPImageArchiveResponse;
+import io.github.che4.splash.utils.BmpConverter;
 
 public class BingPhotoOfTheDayTest {
 

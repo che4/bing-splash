@@ -2,10 +2,10 @@ package io.github.che4.touchpoint;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Objects;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -77,11 +77,12 @@ public class BingSplashAction extends ProvisioningAction {
 		File featuresFolder = new File(cacheFolder, "features");
 		File featureFolder = new File(featuresFolder, featureName + "_" + iu.getVersion().toString());
 		try {
-			String featureFolderUrl = featureFolder.toURI().toURL().toString();
+			String featureFolderUri = URLDecoder.decode(featureFolder.toURI().toString(), "UTF-8");
+			
 			//txtFile.appendLine(TouchpointConstants.SPLASH_PROPERTY_NAME+"=" + featureFolderUrl );
 			
 			//data.setProperty(TouchpointConstants.SPLASH_PROPERTY_NAME, TouchpointConstants.SPLASH_PREFIX + featureName);
-			data.setProperty(TouchpointConstants.SPLASH_PROPERTY_NAME, featureFolderUrl);
+			data.setProperty(TouchpointConstants.SPLASH_PROPERTY_NAME, featureFolderUri);
 			
 		} catch (IOException e1) {
 			e1.printStackTrace();

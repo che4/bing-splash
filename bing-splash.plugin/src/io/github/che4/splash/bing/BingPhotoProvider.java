@@ -12,7 +12,7 @@ import java.util.concurrent.CompletionException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import io.github.che4.splash.BmpConverter;
+import io.github.che4.splash.utils.BmpConverter;
 
 /**
  * Fetches &quot;Photo of the day&quot; from Bing.com and convert to BMP (for splash). 
