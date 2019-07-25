@@ -81,11 +81,11 @@ public class SplashPart {
 		Optional<File> optDir;
 		try {
 			optDir = P2Util.findFeatureDir(thisBundle);
-		} catch (Exception e) {		
+		} catch (Exception e) {
 			//FIXME clear this
-			File featureDir = new File("C:\\Java\\Project-che4\\bing-splash\\bing-splash.feature");
-			optDir = Optional.of(featureDir);
-			//optDir = Optional.empty();
+			//File featureDir = new File("C:\\Java\\Project-che4\\bing-splash\\bing-splash.feature");
+			//optDir = Optional.of(featureDir);
+			optDir = Optional.empty();
 		}
 		if(optDir.isPresent()) {
 				File featureDir = optDir.get();				

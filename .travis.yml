@@ -1,19 +1,19 @@
 language: java
 jdk:
-  - openjdk8
+- openjdk8
 cache:
   directories:
   - "$HOME/.m2"
 script: >-
-  mvn -f ./splash.releng/pom.xml --global-settings ./.travis/settings.xml -DforceContextQualifier=$TRAVIS_BUILD_NUMBER &&
-  mvn -f ./splash.releng/pom.xml --global-settings ./.travis/settings.xml -DbuildBy="Travis CI - $TRAVIS_BUILD_WEB_URL"
-
+  mvn -f ./splash.releng/pom.xml --global-settings ./.travis/settings.xml -DforceContextQualifier=$TRAVIS_BUILD_NUMBER
+  && mvn -f ./splash.releng/pom.xml --global-settings ./.travis/settings.xml -DbuildBy="Travis CI - $TRAVIS_BUILD_WEB_URL"
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: $GITHUB_TOKEN
   keep_history: true
   target_branch: gh-pages
   on:
     branch: develop
   local_dir: "./bing-splash.update-site/target/repository"
+  github_token:
+    secure: Az46p++pkEtRZ+s6KV5tkb1oBzYznbUg9+n8ej8cdI2lXjogWEnMdSNsOulXeyB754RWtowyx+uFsAN7weyFCTET5E9ElyDLFeSxLmmYWBuLFj9cv57mlGUfZlcjwtNMU6uWmy+vtHaYY95RfRb30jDm4vFDEtWCx1MWjv3E+Oc1T4HjYLdf816ExVEGlU7P+PlcLl+qhT6Zc0uyMszEouGQ4ek0a14o0rgmkwmRIM4jPc+Hk1uZtWrzlVfT2r/GwnYBL+hSRPmtlUBFtHoZ2pR1JojNOd+90R2NQLpzFsuNzC3sF+Aw9ZShmptU7DMezrrpm6g0fT1Oamy6BjMhr8jEYD+sRRMTn89u+Cyqipxa5q+XITjWj+ovfsXzT4z8386wf41v+yBtbDX0ElhKnPHA1f6+Vw4Rtq3eriWGHL6bCE7zgsOnmH04EdD8wnNTpo9gBqj7ETNvEZd70Oz5WK5Vf95sCsJzcL/ZMc/3VOI8FQ1+kAqMz7Q2ZiMpX/7cItU1Sr16yJgXhg4Oqe3L8gQFMRliyQpJP4z8K2zSMNf/NYSjINE4M1NEJg5YcBLfI2jyAD8nSMDazEVtxuw/+zWZoTOSlpddD/1UEfWSHbBKBOeb0ShpV7BLIOBNtcExgtWP/+aBhAslM/3T7tgPLY61QfsJmZmnVXOVg0s7R90=
