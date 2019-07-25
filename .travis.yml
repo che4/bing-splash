@@ -6,7 +6,7 @@ cache:
   - "$HOME/.m2"
 script: >-
   mvn -f ./splash.releng/pom.xml --global-settings ./.travis/settings.xml -DforceContextQualifier=$TRAVIS_BUILD_NUMBER &&
-  mvn -f ./splash.releng/pom.xml --global-settings ./.travis/settings.xml -X -DbuildBy="Travis CI - $TRAVIS_BUILD_WEB_URL" deploy
+  mvn -f ./splash.releng/pom.xml --global-settings ./.travis/settings.xml -DbuildBy="Travis CI - $TRAVIS_BUILD_WEB_URL" deploy
 
 
 #deploy:

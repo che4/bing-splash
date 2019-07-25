@@ -272,6 +272,9 @@
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
+			<properties>
+				<maven.deploy.skip>true</maven.deploy.skip>
+			</properties>
 			<modules>
 				<module>../bing-splash.plugin</module>
 				<module>../bing-splash.touchpoint</module>
