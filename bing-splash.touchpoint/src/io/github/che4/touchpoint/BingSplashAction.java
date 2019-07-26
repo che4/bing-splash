@@ -77,18 +77,13 @@ public class BingSplashAction extends ProvisioningAction {
 		File featuresFolder = new File(cacheFolder, "features");
 		File featureFolder = new File(featuresFolder, featureName + "_" + iu.getVersion().toString());
 		try {
-			String featureFolderUri = URLDecoder.decode(featureFolder.toURI().toString(), "UTF-8");
-			
+			String featureFolderUri = ConfigUtil.toConfigUrl(featureFolder);
 			//txtFile.appendLine(TouchpointConstants.SPLASH_PROPERTY_NAME+"=" + featureFolderUrl );
-			
 			//data.setProperty(TouchpointConstants.SPLASH_PROPERTY_NAME, TouchpointConstants.SPLASH_PREFIX + featureName);
 			data.setProperty(TouchpointConstants.SPLASH_PROPERTY_NAME, featureFolderUri);
-			
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		
-		
 		
 		LauncherData launcherData = manipulator.getLauncherData();
 		String[] programArgs = launcherData.getProgramArgs();
