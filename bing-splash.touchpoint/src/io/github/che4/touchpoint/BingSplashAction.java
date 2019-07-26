@@ -76,14 +76,14 @@ public class BingSplashAction extends ProvisioningAction {
 		}
 		File featuresFolder = new File(cacheFolder, "features");
 		File featureFolder = new File(featuresFolder, featureName + "_" + iu.getVersion().toString());
-		try {
+		//try {
 			String featureFolderUri = ConfigUtil.toConfigUrl(featureFolder);
 			//txtFile.appendLine(TouchpointConstants.SPLASH_PROPERTY_NAME+"=" + featureFolderUrl );
 			//data.setProperty(TouchpointConstants.SPLASH_PROPERTY_NAME, TouchpointConstants.SPLASH_PREFIX + featureName);
 			data.setProperty(TouchpointConstants.SPLASH_PROPERTY_NAME, featureFolderUri);
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
+		//} catch (IOException e1) {
+		//	e1.printStackTrace();
+		//}
 		
 		LauncherData launcherData = manipulator.getLauncherData();
 		String[] programArgs = launcherData.getProgramArgs();
@@ -92,7 +92,6 @@ public class BingSplashAction extends ProvisioningAction {
 		try {
 			//log.appendLine("Program arguments");
 		for( int i=0; i<programArgs.length; i++) {
-			
 			if(programArgs[i].equalsIgnoreCase(TouchpointConstants.SPLASH_PROGRAM_ARG)) {
 				int valueIdx = i + 1;
 				if(valueIdx < programArgs.length) {

@@ -27,10 +27,10 @@ public class ConfigUtil {
 		return res;
 	}
 	
-	public static String toConfigUrl(File file) throws MalformedURLException {
+	public static String toConfigUrl(File file) {
 		String fileUrl = ConfigUtil.toUrlSeparators(Paths.get(file.toString()).normalize().toString());
-		URL url = new URL("file", null, "/"+fileUrl);
-		return url.toString();
+		//URL url = new URL("file", null, "/"+fileUrl);
+		return "file:/"+fileUrl;
 	}
 	
 }
