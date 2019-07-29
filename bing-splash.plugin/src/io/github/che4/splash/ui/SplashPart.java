@@ -78,68 +78,59 @@ public class SplashPart {
 		new Label(composite, SWT.NONE);
 		
 		Bundle thisBundle = FrameworkUtil.getBundle(getClass());
-		Optional<File> optDir;
 		try {
-			optDir = P2Util.findFeatureDir(thisBundle);
+			File featureDir =  P2Util.findFeatureDir(thisBundle);
+			final File splashDir = new File(featureDir, E4Constants.DOWNLOAD_DIR);				
+			splashDir.mkdirs();
+			renderHelper.setFeatureDir(featureDir);
+			renderHelper.setImageDir(splashDir);
+			
+			forwardButton.addSelectionListener(new SelectionListener() {
+				@Override
+				public void widgetSelected(SelectionEvent e) {						
+					//MessageDialog.openInformation(parent.getShell(), "Move forward", "Avanti!!!");
+					renderHelper.next();
+				}
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {}
+			});
+			
+			backButton.addSelectionListener(new SelectionListener() {
+				@Override
+				public void widgetSelected(SelectionEvent e) {						
+					//MessageDialog.openInformation(parent.getShell(), "Move forward", "Avanti!!!");
+					renderHelper.previous();
+				}
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {}
+			});
+			
+			saveButton.addSelectionListener(new SelectionListener() {
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					renderHelper.saveSplash();
+				}
+				@Override
+				public void widgetDefaultSelected(SelectionEvent e) {}
+			});
+			
+			BingPhotoProvider bpp = new BingPhotoProvider();
+			bpp.setSplashDirecotry(splashDir);
+			bpp.updatePhotos(7)
+				.thenAcceptAsync( counts -> {
+					//renderHelper.setFeatureDir(featureDir);
+				})
+				.exceptionally(e -> {
+					MessageDialog.openWarning(parent.getShell(), 
+							"Update from bing.com failed",
+							"New images aren't downloaded.\r\n" + e.getMessage());
+					return null;
+				});
+			renderHelper.render(new File(featureDir, E4Constants.SPLASH_FILE_NAME));
 		} catch (Exception e) {
-			//FIXME clear this
-			//File featureDir = new File("C:\\Java\\Project-che4\\bing-splash\\bing-splash.feature");
-			//optDir = Optional.of(featureDir);
-			optDir = Optional.empty();
-		}
-		if(optDir.isPresent()) {
-				File featureDir = optDir.get();				
-				final File splashDir = new File(featureDir, E4Constants.DOWNLOAD_DIR);				
-				splashDir.mkdirs();
-				renderHelper.setFeatureDir(featureDir);
-				renderHelper.setImageDir(splashDir);
-				
-				forwardButton.addSelectionListener(new SelectionListener() {
-					@Override
-					public void widgetSelected(SelectionEvent e) {						
-						//MessageDialog.openInformation(parent.getShell(), "Move forward", "Avanti!!!");
-						renderHelper.next();
-					}
-					@Override
-					public void widgetDefaultSelected(SelectionEvent e) {}
-				});
-				
-				backButton.addSelectionListener(new SelectionListener() {
-					@Override
-					public void widgetSelected(SelectionEvent e) {						
-						//MessageDialog.openInformation(parent.getShell(), "Move forward", "Avanti!!!");
-						renderHelper.previous();
-					}
-					@Override
-					public void widgetDefaultSelected(SelectionEvent e) {}
-				});
-				
-				saveButton.addSelectionListener(new SelectionListener() {
-					@Override
-					public void widgetSelected(SelectionEvent e) {
-						renderHelper.saveSplash();
-					}
-					@Override
-					public void widgetDefaultSelected(SelectionEvent e) {}
-				});
-				
-				BingPhotoProvider bpp = new BingPhotoProvider();
-				bpp.setSplashDirecotry(splashDir);
-				bpp.updatePhotos(7)
-					.thenAcceptAsync( counts -> {
-						//renderHelper.setFeatureDir(featureDir);
-					})
-					.exceptionally(e -> {
-						MessageDialog.openWarning(parent.getShell(), 
-								"Update from bing.com failed",
-								"New images aren't downloaded.\r\n" + e.getMessage());
-						return null;
-					});
-				renderHelper.render(new File(featureDir, E4Constants.SPLASH_FILE_NAME));
-		}else {
 			MessageDialog.openError(parent.getShell(), 
-				"Failed",
-				"Are you runing this plugin from development environment?? See comments in io.github.splash.ui.SplashPart");
+					"Failed",
+					e.getMessage());
 		}
 	}
 
