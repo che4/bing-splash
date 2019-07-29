@@ -81,8 +81,6 @@ public class BingSplashAction extends ProvisioningAction {
 			//txtFile.appendLine(TouchpointConstants.SPLASH_PROPERTY_NAME+"=" + featureFolderUrl );
 			//data.setProperty(TouchpointConstants.SPLASH_PROPERTY_NAME, TouchpointConstants.SPLASH_PREFIX + featureName);
 			data.setProperty(TouchpointConstants.SPLASH_PROPERTY_NAME, featureFolderUri);
-			data.setProperty("testPath", ConfigUtil.toUrlSeparators(featureFolder.toString()));
-			data.setProperty("testPlus", "Hello+world, Ola%25mundo!");
 		//} catch (IOException e1) {
 		//	e1.printStackTrace();
 		//}
