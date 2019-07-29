@@ -3,6 +3,17 @@ metaRequirements.0.namespace=io.github.che4.touchpoint
 metaRequirements.0.name=bingSplash
 instructions.configure=io.github.che4.touchpoint.bingSplash();
 
+artifacts.0.classifier=osgi.bundle
+artifacts.0.name=io.github.che4.splash
+artifacts.0.version=$version$
+instructions.uninstall=org.eclipse.equinox.p2.touchpoint.eclipse.uninstallBundle(bundle:${artifact})
+
+artifacts.1.classifier=osgi.bundle
+artifacts.1.name=io.github.che4.touchpoint
+artifacts.1.version=$version$
+instructions.uninstall=org.eclipse.equinox.p2.touchpoint.eclipse.uninstallBundle(bundle:${artifact})
+
+
 # properties.1.name=org.eclipse.equinox.p2.type.category
 # properties.1.value=true
 
